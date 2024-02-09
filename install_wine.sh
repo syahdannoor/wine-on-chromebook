@@ -1,15 +1,12 @@
 #!/bin/bash
-# 1. enable multiarch support
+# 1. preparation
 sudo dpkg –add-architecture i386
-# 2. download wine signing key
-wget -nc https://dl.winehq.org/wine-builds/winehq.key
-# 3. add wine's signing key
-sudo apt-key add winehq.key
-# 4. add wine's repository
-echo “deb https://dl.winehq.org/wine-builds/debian/ bullseye main” | sudo tee /etc/apt/sources.list.d/wine_chrome_os_made_simple.list
-# 5. update system repositories
+# 2. add the repo
+sudo mkdir -pm755 /etc/apt/keyrings
+sudo wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key
+# 3. download winehq of debian 12 (bookworm)
+sudo wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources
+# 4. update
 sudo apt update
-# 6. install wine
-sudo apt install –install-recommends winehq-stable
-# 7. configure wine
-winecfg
+# 5. install wine stable branch
+sudo apt install --install-recommends winehq-stable
