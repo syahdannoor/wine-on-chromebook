@@ -13,7 +13,3 @@ sudo apt update
 sudo apt install –install-recommends winehq-stable
 # 7. configure wine
 winecfg
-# 8. download mt5 setup files from exness
-#wget https://download.metatrader.com/cdn/web/exness.technologies.ltd/mt5/exness5setup.exe
-# 9. install mt5
-#wine exness5setup.exe
